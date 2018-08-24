@@ -18,17 +18,13 @@ class Solution {
     private static final int DECIMAL = 10;
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        List<Integer> correctOrderList1 = convert(l1); // 2, 4, 3
-        List<Integer> correctOrderList2 = convert(l2); // 5, 6, 4
+        List<Integer> list1 = convert(l1); // 2, 4, 3
+        List<Integer> list2 = convert(l2); // 5, 6, 4
 
-        if (correctOrderList2.size() > correctOrderList1.size()) {
-            List<Integer> temp = correctOrderList1;
-            correctOrderList1 = correctOrderList2;
-            correctOrderList2 = temp;
-        }
+        equalizeSizes(list1, list2);
 
-        Iterator iter1 = correctOrderList1.iterator();
-        Iterator iter2 = correctOrderList2.iterator();
+        Iterator iter1 = list1.iterator();
+        Iterator iter2 = list2.iterator();
         int value1 = 0;
         int value2 = 0;
         int carry = 0;
@@ -63,6 +59,15 @@ class Solution {
         }
 
         return convertList(result);
+    }
+
+    private void equalizeSizes(List<Integer> list1, List<Integer> list2) {
+        while (list1.size() > list2.size()) {
+            list2.add(0);
+        }
+        while (list2.size() > list1.size()) {
+            list1.add(0);
+        }
     }
 
     private List<Integer> convert(ListNode root) {
