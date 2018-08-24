@@ -14,7 +14,7 @@ import java.util.List;
  */
 class Solution {
 
-    // https://leetcode.com/submissions/detail/171319044/ <--- here is the submission. my assumption is that this integer could be a over a million digits long
+    // https://leetcode.com/submissions/detail/171319044/ <--- here is the submission. my assumption is that this integer could be a over a million digits long. took about 80 min long for the entire thing.
 
     private static final int DECIMAL = 10;
 
@@ -26,28 +26,12 @@ class Solution {
 
         Iterator iter1 = list1.iterator();
         Iterator iter2 = list2.iterator();
-        int value1 = 0;
-        int value2 = 0;
         int carry = 0;
 
         List<Integer> result = new LinkedList<>();
 
-        while (iter1.hasNext() || iter2.hasNext()) { // we assume list 1 is always the longer one
-            if (iter1.hasNext()) {
-                value1 = (int) iter1.next();
-            } else {
-                result.add((Integer) iter2.next() + carry);
-                continue;
-            }
-
-            if (iter2.hasNext()) {
-                value2 = (int) iter2.next();
-            } else {
-                result.add(value1 + carry);
-                continue;
-            }
-
-            int value = value1 + value2 + carry;
+        while (iter1.hasNext()) { // we have equalized the lists now
+            int value = (int) iter1.next() + (int) iter2.next() + carry;
 
             carry = value / DECIMAL;
             value = value % DECIMAL;

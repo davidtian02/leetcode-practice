@@ -3,7 +3,7 @@ package com.leetcode.twosums;
 public class Main {
 
     /**
-     * see submission at https://leetcode.com/submissions/detail/171178969/ accepted.
+     * see submission at https://leetcode.com/submissions/detail/171178969/ accepted. super rusty.  took about 40 min or so
      */
 
     public static void main(String[] args) {
