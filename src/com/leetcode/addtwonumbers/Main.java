@@ -4,7 +4,7 @@ class Main {
     public static void main(String... args) {
         ListNode list1 = makeList(new int[]{2, 4, 3});
         ListNode list2 = makeList(new int[]{5, 6, 4});
-        new Solution().addTwoNumbers();
+        new Solution().addTwoNumbers(list1, list2);
     }
 
     private static ListNode makeList(int[] arr) {
