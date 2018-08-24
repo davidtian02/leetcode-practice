@@ -2,6 +2,10 @@ package com.leetcode.twosums;
 
 public class Main {
 
+    /**
+     * see submission at https://leetcode.com/submissions/detail/171178969/ accepted.
+     */
+
     public static void main(String[] args) {
 	    System.out.println("hi");
 
