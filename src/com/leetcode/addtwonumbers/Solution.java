@@ -1,6 +1,5 @@
 package com.leetcode.addtwonumbers;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +13,8 @@ import java.util.List;
  * }
  */
 class Solution {
+
+    // https://leetcode.com/submissions/detail/171319044/ <--- here is the submission. my assumption is that this integer could be a over a million digits long
 
     private static final int DECIMAL = 10;
 
