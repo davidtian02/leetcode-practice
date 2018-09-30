@@ -1,5 +1,6 @@
 package com.leetcode.minCostClimbStairs;
 
+//https://leetcode.com/submissions/detail/179385343/
 class Solution {
     public int minCostClimbingStairs(int[] cost) {
         if (cost == null || cost.length == 0) {
