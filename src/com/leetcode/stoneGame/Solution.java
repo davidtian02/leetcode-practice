@@ -14,10 +14,10 @@ class Solution {
     private boolean canAlexWin(int[] piles, int i, int j, int alex, int lee) {
         if (i >= j-1) {
             if (alex + piles[i] > lee + piles[j] || alex + piles[j] > lee + piles[i]) {
-                cache.put(new Pair<>(i, j), true);
+                // cache.put(new Pair<>(i, j), true);
                 return true;
             } else {
-                cache.put(new Pair<>(i, j), false);
+                // cache.put(new Pair<>(i, j), false);
                 return false;
             }
         }
@@ -44,7 +44,7 @@ class Solution {
 
             totalResult = result || totalResult;
 
-            // cache.put(pair, totalResult);
+            // cache.put(pair, totalResult); // noperino
         }
 
         pair = new Pair<>(i+2, j);
@@ -54,9 +54,9 @@ class Solution {
             result = canAlexWin(piles, i+2, j, alex + piles[i], lee + piles[i + 1]);
             if (result) {
                 cache.put(pair, true);
-                // return true;
-                // } else {
-                //     cache.put(pair, false);
+                return true;
+            } else {
+                cache.put(pair, false);
             }
             totalResult = result || totalResult;
         }
