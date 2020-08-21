@@ -1,6 +1,8 @@
 package com.leetcode.challenge.august2020.path_sum_iii;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -18,8 +20,46 @@ import java.util.Queue;
  *     }
  * }
  */
+// https://leetcode.com/explore/challenge/card/august-leetcoding-challenge/550/week-2-august-8th-august-14th/3417/
 class Solution {
     public int pathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
+        }
+        return dfs(root, new ArrayList<>(), sum);
+    }
+
+    private int dfs(TreeNode root, List<Integer> parentSums, int target) {
+        int count = 0;
+
+        if (root.val == target) {
+            count++;
+        }
+        for (int i=0; i<parentSums.size(); i++) {
+            int prev = parentSums.get(i);
+            if (root.val + prev == target) {
+                count++;
+            }
+            parentSums.set(i, root.val+prev);
+        }
+
+        if (root.left != null) {
+            List<Integer> left = new ArrayList<>(parentSums);
+            left.add(root.val);
+            count += dfs(root.left, left, target);
+        }
+
+        if (root.right != null) {
+            List<Integer> right = new ArrayList<>(parentSums);
+            right.add(root.val);
+            count += dfs(root.right, right, target);
+        }
+
+        return count;
+    }
+
+
+    public int pathSum2(TreeNode root, int sum) {
         // since only 1000, prolly BFS is okay i guess?
         int count = 0;
         if (root == null) {
@@ -82,17 +122,17 @@ class Solution {
         TreeNode root = testCase1();
         System.out.println(runner.pathSum(root, 8));
 
-        root = testCase2();
-        System.out.println(runner.pathSum(root, 1));
-
-        root = testCase3();
-        System.out.println(runner.pathSum(root, 22));
-
-        root = testCase4();
-        System.out.println(runner.pathSum(root, 2));
-
-        root = testCase5();
-        System.out.println(runner.pathSum(root, 3));
+//        root = testCase2();
+//        System.out.println(runner.pathSum(root, 1));
+//
+//        root = testCase3();
+//        System.out.println(runner.pathSum(root, 22));
+//
+//        root = testCase4();
+//        System.out.println(runner.pathSum(root, 2));
+//
+//        root = testCase5();
+//        System.out.println(runner.pathSum(root, 3));
     }
 
     private static TreeNode testCase5() {
