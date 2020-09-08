@@ -2,8 +2,26 @@ package com.leetcode.problems.easy.sum_of_root_to_leaf_binary_numbers;
 
 // https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/submissions/
 class Solution {
-    int sum = 0;
     public int sumRootToLeaf(TreeNode root) {
+        return sumHelper(root, 0);
+    }
+
+    private int sumHelper(TreeNode root, int current) {
+        if (root == null) {
+            return 0;
+        }
+
+        current = (current<<1) + root.val;
+        if (root.left == null && root.right == null) {
+            return current;
+        }
+
+        return sumHelper(root.left, current) + sumHelper(root.right, current);
+    }
+
+
+    int sum = 0;
+    public int sumRootToLeaf2(TreeNode root) {
         sumPaths(root, 0);
         return sum;
     }
