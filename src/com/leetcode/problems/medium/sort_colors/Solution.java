@@ -2,7 +2,8 @@ package com.leetcode.problems.medium.sort_colors;
 
 import java.util.Arrays;
 
-class Solution {
+// https://leetcode.com/problems/sort-colors/
+class Solution { // TODO actually, you can do this better by swapping with 3 indices instead, all at the same time.
     public void sortColors(int[] nums) {
         final int[] freq = new int[3]; // constant space
         Arrays.stream(nums).forEach(a->freq[a]++);
