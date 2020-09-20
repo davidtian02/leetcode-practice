@@ -1,29 +1,27 @@
 package com.leetcode.problems.medium.find_bottom_left_tree_value;
 
 // https://leetcode.com/problems/find-bottom-left-tree-value/
-public class Solution {
+class Solution {
+    private int depth = 0;
+    private int leftmostValue = -1;
+
     public int findBottomLeftValue(TreeNode root) {
-        helper(root, 1);
-        return targetVal;
+        dfs(root, 1);
+        return leftmostValue;
     }
 
-    private int depth = 0;
-    private int targetVal = -1;
-    private void helper(TreeNode root, int level) {
-        if (root == null) {
-            return;
-        }
-
-        if (level > depth) {
-            targetVal = root.val;
+    private void dfs(TreeNode root, int level) {
+        if (level > depth) { // if we have a higher depth, we store the value because in DFS, we hit the leftmost value FIRST.
+            leftmostValue = root.val;
             depth = level;
         }
 
+        // children are at one level beyond the parent's level, so the children's depth is just the parent/current level + 1
         if (root.left != null) {
-            helper(root.left, level+1);
+            dfs(root.left, level + 1);
         }
         if (root.right != null) {
-            helper(root.right, level+1);
+            dfs(root.right, level + 1);
         }
     }
 
@@ -38,5 +36,9 @@ public class Solution {
             this.left = left;
             this.right = right;
         }
+    }
+
+    public static void main(String... args) {
+
     }
 }
