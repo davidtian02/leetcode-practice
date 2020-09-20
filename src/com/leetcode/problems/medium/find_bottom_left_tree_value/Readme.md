@@ -55,6 +55,8 @@ After traversing every node in the tree, we can return the node that we set at h
 
 Please see attached image for example. 
 
+![Implementation Visualization](https://github.com/davidtian02/leetcode-practice/blob/28de70e3aa47c379a45f4c095533057e8cc27ac1/src/com/leetcode/problems/medium/find_bottom_left_tree_value/dfs_diagram.jpg?raw=true)
+
 ## Test Cases
 
 It is often helpful to first come up with your own test cases in order to understand the problem better *(Tip: often times 
