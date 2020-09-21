@@ -1,13 +1,25 @@
 package com.leetcode.problems.hard.longest_consecutive_sequence;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 // https://leetcode.com/problems/longest-consecutive-sequence/
 class Solution {
 
     public int longestConsecutive(int[] nums) {
+        Set<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toSet());
+        int max = 0;
+        while (!set.isEmpty()) {
+            Integer seed = set.iterator().next();
+            int count=0, left=seed-1, right=seed;
+            while (set.remove(left--)) count++;
+            while (set.remove(right++)) count++;
+            max = Math.max(count, max);
+        }
+        return max;
+    }
+
+    public int longestConsecutive2(int[] nums) {
         Map<Integer, Integer> freq = makeFrequency(nums);
         int max = 0;
         while (!freq.isEmpty()) {
