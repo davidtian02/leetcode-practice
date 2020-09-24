@@ -2,7 +2,7 @@ package com.leetcode.challenge.september2020.majority_element_ii;
 
 import java.util.*;
 
-// https://leetcode.com/problems/majority-element-ii/
+// https://leetcode.com/explore/featured/card/september-leetcoding-challenge/557/week-4-september-22nd-september-28th/3469/
 public class Solution {
 
     List<Integer> majorityElement(int[] nums) {
